@@ -24,12 +24,6 @@ public class AnimalServiceImpl implements AquaService {
 	}
 
 	@Override
-	public void createAnimal(Animal fish) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public Animal updateAnimal(Animal fish) {
 		// TODO Auto-generated method stub
 		return null;
@@ -38,6 +32,14 @@ public class AnimalServiceImpl implements AquaService {
 	@Override
 	public void deleteAnimal(Animal fish) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createAnimal(int id, String genus, String characteristics, String habitat, String species,
+			String diet) {
+		ad.createAnimals(id, genus, characteristics, habitat, species, diet);
+		System.out.println("method override");
 		
 	}
 

@@ -2,21 +2,21 @@ package com.revature.beans;
 
 public class Animal {
 	
-	public Animal(String genus, String characteristic, String habitat, String species, String diet, String appearence) {
+	public Animal(int id, String genus, String characteristic, String habitat, String species, String diet) {
 		super();
+		this.id = id;
 		this.genus = genus;
 		this.characteristic = characteristic;
 		this.habitat = habitat;
 		this.species = species;
 		this.diet = diet;
-		this.appearence = appearence;
 	}
+	private int id;
 	private String genus;
 	private String characteristic;
 	private String habitat;
 	private String species;
 	private String diet;
-	private String appearence;
 	public String getGenus() {
 		return genus;
 	}
@@ -47,16 +47,16 @@ public class Animal {
 	public void setDiet(String diet) {
 		this.diet = diet;
 	}
-	public String getAppearence() {
-		return appearence;
-	}
-	public void setAppearence(String appearence) {
-		this.appearence = appearence;
-	}
 	@Override
 	public String toString() {
 		return "Animal [genus=" + genus + ", characteristic=" + characteristic + ", habitat=" + habitat + ", species="
-				+ species + ", diet=" + diet + ", appearence=" + appearence + "]";
+				+ species + ", diet=" + diet + "]";
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

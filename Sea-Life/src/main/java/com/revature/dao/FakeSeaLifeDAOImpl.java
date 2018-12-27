@@ -8,10 +8,15 @@ public class FakeSeaLifeDAOImpl implements SeaLifeDAO {
     private List<Animal> aquarAnimals = new ArrayList<Animal>();
     
     public FakeSeaLifeDAOImpl() {
-        aquarAnimals.add(new Animal("Cetacea", "fins", "temperate waters", "Dolphin", "fish", "gray, long mammal with smooth rubbery skin"));
+        aquarAnimals.add(new Animal(1, "Cetacea", "fins, gray, long mammal with smooth rubbery skin", "temperate waters", "Dolphin", "fish"));
+        aquarAnimals.add(new Animal(2, "Archelon", "flipper, green, shell, 3.52 meters long", "South Dakota", "Sea Turtle", "fish and plants"));
+        aquarAnimals.add(new Animal(3, "Dugong", "tail, flat snout", "Australia", "Dugong", "sea grass"));
+        aquarAnimals.add(new Animal(4, "Pterois", "colorful, worst fish ever", "temperate waters", "Lion Fish", "everything smaller than them"));
     }
-    public void createAnimals(Animal animal) {
-        aquarAnimals.add(animal);
+    public void createAnimals(int id, String genus, String characteristics, String habitat, String species, String diet) {
+    	Animal an = new Animal(id, genus, characteristics, habitat, species, diet);
+        aquarAnimals.add(an);
+        System.out.println("method works");
         
     }
     public Animal updateAnimals(Animal animal) {
@@ -21,7 +26,6 @@ public class FakeSeaLifeDAOImpl implements SeaLifeDAO {
                 a.setHabitat(animal.getHabitat());
                 a.setSpecies(animal.getSpecies());
                 a.setDiet(animal.getDiet());
-                a.setAppearence(animal.getAppearence());
                 return a;
             }
         }
