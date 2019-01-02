@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -13,8 +14,16 @@ public class SeaLifeDAOImpl implements SeaLifeDAO {
 
 	@Override
 	public List<Animal> allAnimals() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Animal> animals = new ArrayList<>();
+		//use a Query to retrieve all caves
+		try(SessionFactory sf = HibernateUtil.getSessionFactory()) {
+			Session s = sf.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			s.createQuery("from Animal").getResultList();
+			tx.commit();
+			s.close();
+		}
+		return animals;
 	}
 
 	@Override

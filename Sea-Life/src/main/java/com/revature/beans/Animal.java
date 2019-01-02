@@ -10,6 +10,10 @@ import javax.persistence.Table;
 @Table(name="FISH")
 public class Animal {
 	
+	public Animal() {
+		
+	}
+	
 	public Animal(int id, String genus, String characteristic, String habitat, String species, String diet) {
 		super();
 		this.id = id;
