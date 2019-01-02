@@ -53,4 +53,9 @@ public class FakeSeaLifeDAOImpl implements SeaLifeDAO {
         }
         return toReturn;
     }
+	@Override
+	public Animal getAnimalById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
