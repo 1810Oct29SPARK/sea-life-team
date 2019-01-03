@@ -38,7 +38,7 @@ public class Animal {
 	private int id;
 	@Column(name="GENUS")
 	private String genus;
-	@Column(name="CHARACTERSTICS")
+	@Column(name="CHARACTERISTICS")
 	private String characteristic;
 	@Column(name="HABITAT")
 	private String habitat;

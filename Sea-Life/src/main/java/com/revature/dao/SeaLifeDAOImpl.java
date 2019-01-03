@@ -11,15 +11,17 @@ import com.revature.beans.Animal;
 import com.revature.util.HibernateUtil;
 
 public class SeaLifeDAOImpl implements SeaLifeDAO {
+	
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 
 	@Override
 	public List<Animal> allAnimals() {
 		List<Animal> animals = new ArrayList<>();
 		//use a Query to retrieve all caves
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()) {
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()) {
+			System.out.println("in try block");
 			Transaction tx = s.beginTransaction();
-			s.createQuery("from Animal").getResultList();
+			animals = s.createQuery("from Animal").getResultList();
 			tx.commit();
 			s.close();
 		}
@@ -29,8 +31,7 @@ public class SeaLifeDAOImpl implements SeaLifeDAO {
 	@Override
 	public Animal getAnimalById(int id) {
 		Animal a = null;
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()) {
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			a = (Animal) s.get(Animal.class, id);
 			tx.commit();
@@ -42,20 +43,32 @@ public class SeaLifeDAOImpl implements SeaLifeDAO {
 	@Override
 	public void createAnimals(int id, String genus, String characteristics, String habitat, String species,
 			String diet) {
-		// TODO Auto-generated method stub
-		
+		try (Session s = sf.getCurrentSession()) {
+			Transaction tx = s.beginTransaction();
+			s.persist(new Animal(id, genus, characteristics, habitat, species, diet));
+			tx.commit();
+			s.close();
+		}
 	}
 
 	@Override
-	public Animal updateAnimals(Animal animal) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAnimals(Animal animal) {
+		try (Session s = sf.getCurrentSession()) {
+			Transaction tx = s.beginTransaction();
+			s.update(animal);
+			tx.commit();
+			s.close();
+		}
 	}
 
 	@Override
-	public void deleteAnimals(Animal animal) {
-		// TODO Auto-generated method stub
-		
+	public void deleteAnimalById(Animal animal) {
+		try(Session s = sf.getCurrentSession()) {
+			Transaction tx = s.beginTransaction();
+			s.delete(animal);
+			tx.commit();
+			s.close();
+		}
 	}
 	
 	

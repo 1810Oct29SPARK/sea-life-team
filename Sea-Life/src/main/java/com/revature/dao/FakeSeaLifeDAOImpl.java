@@ -19,17 +19,15 @@ public class FakeSeaLifeDAOImpl implements SeaLifeDAO {
         System.out.println("method works");
         
     }
-    public Animal updateAnimals(Animal animal) {
+    public void updateAnimals(Animal animal) {
         for (Animal a : aquarAnimals) {
             if (a.getGenus() == animal.getGenus()) {
                 a.setCharacteristic(animal.getCharacteristic());
                 a.setHabitat(animal.getHabitat());
                 a.setSpecies(animal.getSpecies());
                 a.setDiet(animal.getDiet());
-                return a;
             }
         }
-        return null;
     }
     public void deleteAnimals(Animal animal) {
         Iterator<Animal> it = aquarAnimals.iterator();
@@ -57,5 +55,10 @@ public class FakeSeaLifeDAOImpl implements SeaLifeDAO {
 	public Animal getAnimalById(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public void deleteAnimalById(Animal animal) {
+		// TODO Auto-generated method stub
+		
 	}
 }
