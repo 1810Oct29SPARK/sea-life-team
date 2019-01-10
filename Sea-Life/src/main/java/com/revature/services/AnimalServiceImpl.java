@@ -2,10 +2,13 @@ package com.revature.services;
 
 import java.util.List;
 
-import com.revature.beans.Animal;
-import com.revature.dao.SeaLifeDAO;
-import com.revature.dao.FakeSeaLifeDAOImpl;
+import org.springframework.stereotype.Service;
 
+import com.revature.beans.Animal;
+import com.revature.dao.FakeSeaLifeDAOImpl;
+import com.revature.dao.SeaLifeDAO;
+
+@Service(value="aquaService")
 public class AnimalServiceImpl implements AquaService {
 	
 	private SeaLifeDAO ad = new FakeSeaLifeDAOImpl();
